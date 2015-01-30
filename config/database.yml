@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: snowrace-web_development
+  username: develop
+  password: develop
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: snowrace-web_test
+  username: test
+  password: test
+  
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: snowrace-web_production
+  username: production
+  password: production
