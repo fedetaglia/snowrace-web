@@ -9,7 +9,7 @@ class Api::V1::RacesController < Api::V1::BaseController
       @race = Race.new(user: @user, race_result: race_result)
 
       if @race.save
-        expose @race, serializer: Api::RaceSerializer
+        responds @race, serializer: Api::RaceSerializer
       else
         p "RACE ERRORS #{@race.errors.full_messages}"
         render_error RocketPants::InvalidResource.new(@race.errors)
@@ -20,6 +20,12 @@ class Api::V1::RacesController < Api::V1::BaseController
       render_error RocketPants::InvalidResource.new(@user.errors)
     end    
 
+  end
+
+
+  def index
+    @user = User.find_by app_id: params[:user_id] if params[:user_id].present?
+    responds Api::RacesSerializer.serialize @user.races
   end
 
 end

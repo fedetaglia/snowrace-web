@@ -1,8 +1,8 @@
 require 'api/serializer'
 
 module Api
-  class RaceSerializer < Serializer
-    attributes :id, :user_app_id, :race_result
+  class RacesSerializer < Serializer
+    attributes :id, :race_result
 
     def user_app_id
       object.user.app_id
